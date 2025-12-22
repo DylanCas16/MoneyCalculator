@@ -1,4 +1,4 @@
 package software.ulpgc.model;
 
-public record Money(int value, Currency currency) {
+public record Money(double value, Currency currency) {
 }
