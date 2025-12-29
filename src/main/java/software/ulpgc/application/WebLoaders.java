@@ -19,8 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WebLoaders {
-    private static final String ApiKey = "aeb1cd5ef6081142040d717f";
-    private static final String ApiUrl = "https://v6.exchangerate-api.com/v6/API-KEY/".replace("API-KEY", ApiKey);
+    private static final String ApiKey = "78de459709849e2c9d0358be";
+    private static final String ApiUrl = "https://v6.exchangerate-api.com/v6/" + ApiKey + "/";
     public static class WebCurrencyLoader implements CurrencyLoader {
 
         @Override
@@ -28,7 +28,7 @@ public class WebLoaders {
             try {
                 return readCurrencies();
             } catch (IOException e) {
-                return List.of();
+                throw new RuntimeException(e);
             }
         }
 
