@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9710debd-77bf-42ca-8c3f-ad1c3db224cb" name="Changes" comment="Created first view for GUI money calculator">
+    <list default="true" id="9710debd-77bf-42ca-8c3f-ad1c3db224cb" name="Changes" comment="Implemented functional interface and minor changes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/software/ulpgc/application/Desktop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/software/ulpgc/application/Desktop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/software/ulpgc/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/software/ulpgc/application/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/software/ulpgc/application/WebLoaders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/software/ulpgc/application/WebLoaders.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/software/ulpgc/model/Currency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/software/ulpgc/model/Currency.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,12 +86,21 @@
       <option name="project" value="LOCAL" />
       <updated>1767027664279</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Implemented functional interface and minor changes.">
+      <option name="closed" value="true" />
+      <created>1767038869420</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1767038869420</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Finished classes to import from API." />
     <MESSAGE value="Created first view for GUI money calculator" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created first view for GUI money calculator" />
+    <MESSAGE value="Implemented functional interface and minor changes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented functional interface and minor changes." />
   </component>
 </project>

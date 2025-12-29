@@ -23,44 +23,61 @@ public class Desktop extends JFrame {
     public Desktop(List<Currency> currencies, WebLoaders.WebExchangeRateLoader exchangeLoader) {
         currenciesList = currencies;
         exchangeRate = exchangeLoader;
+
         setTitle("Money Calculator");
-        setSize(600, 500);
+        setSize(400, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        JPanel screen = new JPanel();
-        setLayout(new GridLayout(1, 2));
+        setLayout(new BorderLayout());
 
-        createInputArea();
-        createOutputArea();
+        JPanel mainPanel = new JPanel(new GridLayout(1, 2));
 
-        this.add(screen);
+        createInputArea(mainPanel);
+        createOutputArea(mainPanel);
+        createCalculateButton();
+
+        this.add(mainPanel);
     }
 
-    private void createInputArea() {
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+    private void createInputArea(JPanel container) {
+        JPanel panel = createColumnPanel();
 
-        panel.add(new JLabel("From:"));
+        addCenteredLabel("From:", panel);
         fromCurrency = createCurrenciesField(panel);
 
-        panel.add(new JLabel("Amount:"));
+        addCenteredLabel("Amount:", panel);
         inputTextField = createTextField(panel, true);
 
-        createCalculateButton(panel);
-        this.add(panel);
+        panel.add(Box.createVerticalGlue());
+        container.add(panel);
     }
 
-    private void createOutputArea() {
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+    private void createOutputArea(JPanel container) {
+        JPanel panel = createColumnPanel();
 
-        panel.add(new JLabel("To:"));
+        addCenteredLabel("To:", panel);
         toCurrency = createCurrenciesField(panel);
 
-        panel.add(new JLabel("Result:"));
+        addCenteredLabel("Result:", panel);
         outputTextField = createTextField(panel, false);
-        this.add(panel);
+
+        panel.add(Box.createVerticalGlue());
+        container.add(panel);
+    }
+
+    private JPanel createColumnPanel() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
+        return panel;
+    }
+
+    private void addCenteredLabel(String text, JPanel panel) {
+        JLabel label = new JLabel(text);
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(label);
+        panel.add(Box.createVerticalStrut(5));
     }
 
     private JComboBox<Currency> createCurrenciesField(JPanel panel) {
@@ -70,9 +87,24 @@ public class Desktop extends JFrame {
         return selector;
     }
 
-    private void createCalculateButton(JPanel panel) {
+    private JTextField createTextField(JPanel panel, boolean editable) {
+        JTextField textField = new JTextField();
+        textField.setEditable(editable);
+        textField.setMaximumSize(new Dimension(200, 30));
+        textField.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(textField);
+        return textField;
+    }
+
+    private void createCalculateButton() {
+        JPanel panel = new JPanel();
         JButton button = new JButton("Calculate");
+
+        button.setPreferredSize(new Dimension(150, 40));
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
+
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         button.addActionListener(e -> {
             try {
                 ExchangeMoneyCommand command = new ExchangeMoneyCommand(
@@ -86,14 +118,9 @@ public class Desktop extends JFrame {
                 JOptionPane.showMessageDialog(this, "Please, introduce a valid number.");
             }
         });
-        panel.add(button);
-    }
 
-    private JTextField createTextField(JPanel panel, boolean editable) {
-        JTextField textField = new JTextField(10);
-        textField.setEditable(editable);
-        panel.add(textField);
-        return textField;
+        panel.add(button);
+        this.add(panel, BorderLayout.SOUTH);
     }
 
     private MoneyDisplay createMoneyDisplay() {
